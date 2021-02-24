@@ -7,6 +7,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Dashboard from "./src/containers/pages/Dashboard/Dashboard";
 import LandingPage from "./src/containers/pages/LandingPage/LandingPage";
+import AllTasks from "./src/containers/pages/AllTasks/AllTasks";
+import CompletedTasks from "./src/containers/pages/CompletedTasks/CompletedTasks";
+import PendingTasks from "./src/containers/pages/PendingTasks/PendingTasks";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +30,9 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="Landing" component={LandingPage} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="All Tasks" component={AllTasks} />
+          <Stack.Screen name="Completed Tasks" component={CompletedTasks} />
+          <Stack.Screen name="Pending Tasks" component={PendingTasks} />
         </Stack.Navigator>
       </NavigationContainer>
     );

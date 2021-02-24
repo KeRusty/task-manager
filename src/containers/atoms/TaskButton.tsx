@@ -3,25 +3,31 @@ import { Text, View, Image, TouchableOpacity } from "react-native";
 
 export default function TaskButton({
   text,
-  selected,
-  onSelect,
+  active,
+  onPress,
 }: {
   text: string;
   selected?: boolean;
   onSelect?: any;
+  active?: any;
+  onPress?: any;
 }) {
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: selected ? "#800080" : "#D3D3D3",
-        paddingVertical: 20,
+        backgroundColor: "#800080",
+        paddingVertical: 30,
         paddingHorizontal: 25,
+        width: 200,
         borderRadius: 20,
-        marginVertical: 10,
-        marginHorizontal: 5,
+        marginVertical: 5,
+        alignItems: "center",
       }}
+      onPress={onPress}
     >
-      <Text style={{ fontWeight: "500", color: "#FFFFFF" }}>{text}</Text>
+      <Text style={{ fontWeight: "500", color: "#FFFFFF", fontSize: 18 }}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 }

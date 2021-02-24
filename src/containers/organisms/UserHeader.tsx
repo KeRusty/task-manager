@@ -11,6 +11,8 @@ export default function UserHeader({ name }: { name: string }) {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        borderBottomColor: "#d3d3d3",
+        borderBottomWidth: 0.2,
       }}
     >
       <View style={{ paddingLeft: 20 }}>
