@@ -23,14 +23,14 @@ export default function LandingPage({ navigation }: { navigation: any }) {
       <TouchableOpacity
         style={{
           backgroundColor: "#4267B2",
-          paddingVertical: 10,
+          paddingVertical: 14,
           paddingHorizontal: 80,
           marginTop: 130,
           borderRadius: 30,
         }}
         onPress={() => navigation.navigate("Dashboard")}
       >
-        <Text style={{ fontSize: 20, color: "#FFFFFF", fontWeight: "600" }}>
+        <Text style={{ fontSize: 18, color: "#FFFFFF", fontWeight: "600" }}>
           Login
         </Text>
       </TouchableOpacity>
