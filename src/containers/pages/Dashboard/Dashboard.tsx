@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
-import UserHeader from "../../molecules/UserHeader";
-import TaskButton from "../../molecules/TaskButton";
+import UserHeader from "../../organisms/UserHeader";
+import TaskButton from "../../atoms/TaskButton";
 
 export default function Dashboard() {
   return (

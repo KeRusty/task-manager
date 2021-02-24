@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -11,21 +11,41 @@ import LandingPage from "./src/containers/pages/LandingPage/LandingPage";
 const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Landing" component={LandingPage} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+  const [isLoadingComplete, setLoadingComplete] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+  if (!isLoadingComplete) {
+    return (
+      <AppLoading
+        startAsync={loadResourcesAsync}
+        onError={handleLoadingError}
+        onFinish={() => handleFinishLoading(setLoadingComplete)}
+      />
+    );
+  } else {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Landing" component={LandingPage} />
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+
+  async function loadResourcesAsync() {
+    await Promise.all([
+      Font.loadAsync({
+        //Roboto: require('native-base/Fonts/Roboto.ttf'),
+        //Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      }),
+    ]);
+  }
+
+  function handleLoadingError(error: any) {
+    console.warn(error);
+  }
+
+  function handleFinishLoading(setLoadingComplete: any) {
+    setLoadingComplete(true);
+  }
+}
